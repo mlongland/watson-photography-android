@@ -144,7 +144,7 @@ public class WatsonQueryFragment extends Fragment {
 
             try {
                 // Default HTTPS connection option values
-                URL watsonURL = new URL("https://watson.ihost.com/instance/23/deepqa/v1/question");
+                URL watsonURL = new URL(getString(R.string.user_watson_server_instance));
                 int timeoutConnection = 30000;
                 connection = (HttpsURLConnection) watsonURL.openConnection();
                 connection.setSSLSocketFactory(context.getSocketFactory());
