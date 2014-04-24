@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -97,6 +99,16 @@ public class WatsonQueryFragment extends Fragment {
                 hideSoftKeyboard(getActivity());
             }
         });
+
+        // hide keyboard when clicking off text edit element
+        getActivity().findViewById(R.id.rootLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideSoftKeyboard(getActivity());
+            }
+        });
+
+        getActivity().findViewById(R.id.rootLayout).requestFocus();
     }
 
     @Override
@@ -145,7 +157,7 @@ public class WatsonQueryFragment extends Fragment {
                 // Watson specific HTTP headers
                 connection.setRequestProperty("X-SyncTimeout", "30");
                 connection.setRequestProperty("Accept", "application/json");
-                connection.setRequestProperty("Authorization", "Basic dXNlcjE6VlE0d1daV3Y=");
+                connection.setRequestProperty("Authorization", "Basic " + getEncodedValues(getString(R.string.user_id), getString(R.string.user_password)));
                 connection.setRequestProperty("Content-Type", "application/json");
                 connection.setRequestProperty("Cache-Control", "no-cache");
 
@@ -162,6 +174,7 @@ public class WatsonQueryFragment extends Fragment {
             try {
                 if (connection != null) {
                     responseCode = connection.getResponseCode();
+                    Log.i(mLogTag, "Server Response Code: " + Integer.toString(responseCode));
 
                     switch(responseCode) {
                         case 200:
@@ -220,15 +233,19 @@ public class WatsonQueryFragment extends Fragment {
             }
 
             try {
-                JSONObject watsonResponse = new JSONObject(json);
-                JSONObject question = watsonResponse.getJSONObject("question");
-                JSONArray evidenceArray = question.getJSONArray("evidencelist");
-                JSONObject mostLikelyValue = evidenceArray.getJSONObject(0);
-                mWatsonAnswerString = mostLikelyValue.get("text").toString();
-                TextView textView = (TextView) getActivity().findViewById(R.id.watson_answer_text);
-                textView.setText(mWatsonAnswerString);
+                if(json != null) {
+                    JSONObject watsonResponse = new JSONObject(json);
+                    JSONObject question = watsonResponse.getJSONObject("question");
+                    JSONArray evidenceArray = question.getJSONArray("evidencelist");
+                    JSONObject mostLikelyValue = evidenceArray.getJSONObject(0);
+                    mWatsonAnswerString = mostLikelyValue.get("text").toString();
+                    TextView textView = (TextView) getActivity().findViewById(R.id.watson_answer_text);
+                    textView.setText(mWatsonAnswerString);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
+                // No valid answern
+                printTryDifferentQuestion();
             }
         }
 
@@ -246,6 +263,23 @@ public class WatsonQueryFragment extends Fragment {
             public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
             }
         }};
+    }
+
+    private void printTryDifferentQuestion() {
+        TextView textView = (TextView) getActivity().findViewById(R.id.watson_answer_text);
+        textView.setText("Please try a different question.");
+    }
+
+    private String getEncodedValues(String user_id, String user_password) {
+        String textToEncode = user_id + ":" + user_password;
+        byte[] data = null;
+        try {
+            data = textToEncode.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String base64 = Base64.encodeToString(data, Base64.DEFAULT);
+        return base64;
     }
 
     public static void hideSoftKeyboard(Activity activity) {

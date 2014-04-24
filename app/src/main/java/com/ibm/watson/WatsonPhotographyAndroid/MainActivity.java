@@ -1,9 +1,12 @@
 package com.ibm.watson.WatsonPhotographyAndroid;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 
 
 public class MainActivity extends ActionBarActivity implements WatsonQueryFragment.WatsonQueryCallbacks {
@@ -18,7 +21,6 @@ public class MainActivity extends ActionBarActivity implements WatsonQueryFragme
                     .commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,6 +40,27 @@ public class MainActivity extends ActionBarActivity implements WatsonQueryFragme
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        // Universal way to remove ActionBar/TitleBar
+        if (Build.VERSION.SDK_INT < 16)
+        {
+            // Hide the status bar
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            // Hide the action bar
+            getSupportActionBar().hide();
+        }
+        else {
+            // Hide the status bar
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+            // Hide the action bar
+            getActionBar().hide();
+        }
     }
 
     @Override

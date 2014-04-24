@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">WatsonPhotographyAndroid</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="user_id">user1</string>
+    <string name="user_password">bE3bT6gW</string>
+    <string name="watson_instructions">Type a question for Watson in the input box below.</string>
+    <string name="watson_answer_title">Answer:</string>
 
 </resources>
