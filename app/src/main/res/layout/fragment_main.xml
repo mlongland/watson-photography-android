@@ -1,75 +1,97 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:fillViewport="true"
+    android:id="@+id/ScrollViewLayout1">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/rootLayout"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="com.ibm.watson.WatsonPhotographyAndroid.MainActivity$PlaceholderFragment">
+        android:background="#8b1b15"
+        tools:context="com.ibm.watson.WatsonHealthyEatCanada.ActivityTwo$PlaceholderFragment"
+        >
+
 
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/watson_logo"
+            android:id="@+id/temp_logo"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/watson_logo" />
+            android:src="@drawable/temp_logo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-        <EditText
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/watson_question_text"
-            android:layout_marginTop="42dp"
+            android:background="@drawable/border_rounded_corners"
             android:layout_below="@+id/watson_instructions_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:padding="10dp"
-            android:textColor="#ff000000"
-            android:background="#ffffffff" />
+            android:id="@+id/watson_question_text_border"
+            android:layout_marginTop="10dp"
+            android:weightSum="1">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_rounded_corners">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/watson_question_text"
+                    android:textColor="#ff000000"
+                    android:background="#00000000"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ask Watson"
-            android:id="@+id/watson_submit_button"
-            android:layout_below="@+id/watson_question_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="#ffbfe538"
-            android:background="#ff3abbe5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/watson_answer_title"
+                android:textColor="#ffffffff"
+                android:layout_below="@+id/watson_submit_button"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_vertical" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/watson_button_text"
+                android:id="@+id/watson_submit_button"
+                android:textColor="#EAFF00"
+                android:background="#db290c"
+                android:layout_below="@+id/watson_question_text_border"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/watson_logo"
+            android:layout_below="@+id/temp_logo"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/watson_instructions"
+            android:layout_marginTop="10dp"
             android:id="@+id/watson_instructions_text"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/watson_answer_title"
-            android:layout_below="@+id/watson_submit_button"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="69dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/watson_answer_title"
             android:textColor="#ffffffff" />
 
         <TextView
@@ -77,12 +99,25 @@
             android:layout_height="wrap_content"
             android:id="@+id/watson_answer_text"
             android:layout_below="@+id/watson_answer_title"
+            android:layout_marginTop="10dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:textColor="#ffffffff" />
+            android:textColor="#ffffffff"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/watson_bottom_logo"
+            android:layout_below="@+id/watson_answer_text"
+            android:src="@drawable/carrots1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/watson_bottom_logo_description" />
 
 
     </RelativeLayout>

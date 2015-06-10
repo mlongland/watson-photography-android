@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/browse_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ibm.watson.WatsonHealthyEatCanada.browse_recipes"
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical"
+    android:background="#8b1b15">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/border_rounded_corners"
+        android:id="@+id/browse_recipe_name_border"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_rounded_corners">
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/browse_recipes_list" >
+                </ListView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/browse_recipe_foods_scroll_view"
+        android:layout_weight="1">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/browse_recipe_foods_table"
+            android:layout_marginTop="10dp"
+            >
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_column="1"
+                    android:id="@+id/browse_recipe_food_name1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:textColor="#C4FEFF"
+                    android:text="Item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_gravity="end"
+                    android:id="@+id/browse_recipe_food_quantity1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="#C4FEFF"
+                    android:text="Quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/browse_recipe_instructions_title"
+        android:id="@+id/browse_recipe_instructions_static_text"
+        android:textColor="#ffffffff" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/browse_recipe_instructions_scrollView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/browse_recipe_instructions_text_input"
+            android:textColor="#C4FEFF"
+            android:background="#00000000"
+            android:text="Recipe instructions here!"/>
+    </ScrollView>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/browse_recipe_button_table"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="40dp"
+            android:text="Get Nutrition Information"
+            android:id="@+id/browse_nutrition_button"
+            android:textColor="#EAFF00"
+            android:background="#db290c"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="40dp"
+            android:text="Edit Recipe"
+            android:id="@+id/browse_edit_button"
+            android:textColor="#EAFF00"
+            android:background="#db290c"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

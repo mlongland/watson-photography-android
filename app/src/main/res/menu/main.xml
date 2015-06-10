@@ -1,10 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.ibm.watson.WatsonPhotographyAndroid.MainActivity" >
+    tools:context="com.ibm.watson.WatsonHealthyEatCanada.MainActivity" >
     
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_menu"
+        android:title="@string/action_menu"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="never"/>
+    <item android:id="@+id/question_menu"
+        android:title="@string/question_menu"/>
+    <item android:id="@+id/browse_recipes_menu"
+        android:title="@string/browse_recipes_menu"/>
+    <item android:id="@+id/create_recipes_menu"
+        android:title="@string/create_recipes_menu"/>
+    <item android:id="@+id/shopping_menu"
+        android:title="@string/shopping_menu"/>
+
 </menu>

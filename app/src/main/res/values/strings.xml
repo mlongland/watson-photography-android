@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">WatsonPhotographyAndroid</string>
-    <string name="action_settings">Settings</string>
-    <string name="user_id">user1</string>
-    <string name="user_password">bE3bT6gW</string>
-    <string name="user_watson_server_instance">https://watson.ihost.com/instance/23/deepqa/v1/question</string>
-    <string name="watson_instructions">Type a question for Watson in the input box below.</string>
-    <string name="watson_answer_title">Answer:</string>
-
+    <string name="app_name">Healthy, Wealthy and Wise</string>
+    <string name="action_settings">Healthy, Wealthy and Wise</string>
+    <string name="user_id">rye_manager</string>
+    <string name="user_password">eVZ1330h</string>
+    <string name="user_watson_server_instance">https://watson-wdc01.ihost.com/instance/532/deepqa/v1/question</string>
+    <string name="watson_instructions">Have a question about healthy eating?</string>
+    <string name="watson_answer_title">Here\'s what I think</string>
+    <string name="watson_button_text">Tell me what you know!</string>
+    <string name="watson_bottom_logo_description">This is the bottom logo</string>
+    <string name="confused">I\'m confused:</string>
+    <string name="easter_egg">easter egg</string>
+    <string name="good_food">that they be healthful food</string>
+    <string name ="action_menu">Menu</string>
+    <string name ="question_menu">Ask a Question</string>
+    <string name ="browse_recipes_menu">Browse Recipes</string>
+    <string name ="create_recipes_menu">Create a Recipe</string>
+    <string name ="shopping_menu">Go Food Shopping</string>
+    <string name ="main_menu_shopping_button_text">Go Shopping With Recipes (Incomplete)</string>
+    <string name ="main_menu_create_recipe_button_text">Create a New Recipe (Demo)</string>
+    <string name ="main_menu_browse_recipe_button_text">Browse Recipes (Demo)</string>
+    <string name ="main_menu_question_button_text">Ask Watson a Food Question</string>
+    <string name="title_activity_browse_recipes">browse_recipes</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_create_recipe">create_recipe</string>
+    <string name="update_recipe_button_text">  Update Recipe  </string>
+    <string name="create_recipe_instructions_title">Recipe Instructions:</string>
+    <string name="create_recipe_foods_title">Food Name: Food Quantity:</string>
+    <string name="create_recipe_name_title">Recipe Name:</string>
+    <string name="save_recipe_button_text">Save Recipe (disabled)</string>
+    <string name="browse_recipe_instructions_title">Instructions:</string>
 </resources>

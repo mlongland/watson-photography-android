@@ -1,34 +1,29 @@
-package com.ibm.watson.WatsonPhotographyAndroid;
+package com.ibm.watson.WatsonHealthyEatCanada;
 
-import android.os.Build;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
+import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity implements WatsonQueryFragment.WatsonQueryCallbacks {
+public class ActivityTwo extends ActionBarActivity implements WatsonQueryFragment.WatsonQueryCallbacks{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new WatsonQueryFragment())
-                    .commit();
+        setContentView(R.layout.activity_two_main);
         }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -36,9 +31,26 @@ public class MainActivity extends ActionBarActivity implements WatsonQueryFragme
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_menu) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             return true;
         }
+        else if (id == R.id.question_menu) {
+            startActivity(new Intent(getApplicationContext(), ActivityTwo.class));
+        }
+        else if (id == R.id.browse_recipes_menu) {
+            startActivity(new Intent(getApplicationContext(), browse_recipes.class));
+            return true;
+        }
+        else if (id == R.id.create_recipes_menu) {
+            startActivity(new Intent(getApplicationContext(), create_recipe.class));
+        }
+        else if (id == R.id.shopping_menu){
+            Toast.makeText(getApplicationContext(), "Shopping not implemented in Demo", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -46,21 +58,6 @@ public class MainActivity extends ActionBarActivity implements WatsonQueryFragme
     protected void onResume()
     {
         super.onResume();
-
-        // Universal way to remove ActionBar/TitleBar
-        if (Build.VERSION.SDK_INT < 16)
-        {
-            // Hide the status bar
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            // Hide the action bar
-            getSupportActionBar().hide();
-        }
-        else {
-            // Hide the status bar
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-            // Hide the action bar
-            getActionBar().hide();
-        }
     }
 
     @Override

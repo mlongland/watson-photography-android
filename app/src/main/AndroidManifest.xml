@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ibm.watson.WatsonPhotographyAndroid" >
+    package="com.ibm.watson.WatsonHealthyEatCanada" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/bottom_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ibm.watson.WatsonPhotographyAndroid.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityTwo"
+            android:label="Watson Query Activity" />
+        <activity
+            android:name=".browse_recipes"
+            android:label="@string/title_activity_browse_recipes" >
+        </activity>
+        <activity
+            android:name=".create_recipe"
+            android:label="@string/title_activity_create_recipe" >
         </activity>
     </application>
 
